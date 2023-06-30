@@ -1,12 +1,18 @@
 import React from 'react';
 
 const CalcForm = () => {
+  const inputChangeHandler = (identifier, value) => {
+    console.log(value);
+  };
   return (
     <form className="form">
     <div className="input-group">
       <p>
         <label htmlFor="current-savings">Current Savings ($)</label>
-        <input type="number" id="current-savings" />
+        <input type="number" id="current-savings"
+         onchange = {(event => {
+          inputChangeHandler('current-savings', event.target.value);
+         })}/>
       </p>
       <p>
         <label htmlFor="yearly-contribution">Yearly Savings ($)</label>
