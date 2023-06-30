@@ -3,11 +3,11 @@ import React from 'react';
 import Resultheader from './Resultheader';
 import Resultbody from './Resultbody';
 
-const Results = () => {
+const Results = (props) => {
     return (
         <table className="result">
         <Resultheader/>
-        <Resultbody/>
+        <Resultbody items = {props.items} />
       </table>
     )
 }

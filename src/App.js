@@ -1,16 +1,20 @@
+import React, {useState} from 'react';
+
+
 import Header from  './components/Header/Header';
 import Calcform from './components/Calcform/Calcform';
 import Results from './components/Results/Results';
 import calculateHandler from './components/Calcform/calculateHandler';
 
+const DUMMY_DATA=[];
+
+
 function App() {
+  const [yearlyData, setYearlyData] = useState(DUMMY_DATA);
 
   const calcHandler = (calcData) => {
-    console.log('App calcHandler');
-    console.log(calcData);
     const yearlyData = calculateHandler(calcData);
-    console.log('Yearly Results --------');
-    console.log(yearlyData);
+    setYearlyData([...yearlyData]);
   }
 
   return (
@@ -19,7 +23,7 @@ function App() {
       <Calcform onCalcData={calcHandler}/>
       {/* Todo: Show below table conditionally (only once result data is available) */}
       {/* Show fallback text if no data is available */}
-    <Results/>
+    <Results items={yearlyData}/>
     </div>
   );
 }

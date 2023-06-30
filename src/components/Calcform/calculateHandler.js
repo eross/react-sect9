@@ -12,15 +12,21 @@ const calculateHandler = (userInput) => {
     const duration = +userInput['duration'];
 
     // The below code calculates yearly results (total savings, interest etc)
+    let totalInterest = 0.0;
+    let totalCapital = currentSavings;
     for (let i = 0; i < duration; i++) {
       const yearlyInterest = currentSavings * expectedReturn;
       currentSavings += yearlyInterest + yearlyContribution;
+      totalCapital += yearlyContribution;
+      totalInterest += yearlyInterest;
       yearlyData.push({
         // feel free to change the shape of the data pushed to the array!
         year: i + 1,
         yearlyInterest: yearlyInterest,
         savingsEndOfYear: currentSavings,
         yearlyContribution: yearlyContribution,
+        totalInterest: +totalInterest,
+        totalCapital: +totalCapital
       });
     }
 
