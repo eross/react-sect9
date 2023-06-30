@@ -5,11 +5,15 @@ import Results from './components/Results/Results';
 
 function App() {
 
+  const calcHandler = (calcData) => {
+    console.log('App calcHandler');
+    console.log(calcData);
+  }
 
   return (
     <div>
       <Header/>
-      <Calcform/>
+      <Calcform onCalcData={calcHandler}/>
       {/* Todo: Show below table conditionally (only once result data is available) */}
       {/* Show fallback text if no data is available */}
     <Results/>

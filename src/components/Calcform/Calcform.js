@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const CalcForm = () => {
+const CalcForm = (props) => {
 
   const [enteredCurrentSavings, setEnteredCurrentSavings] = useState(0.0);
   const [enteredYearlyContribution, setEnteredYearlyContribution] = useState(0.0);
@@ -36,6 +36,8 @@ const CalcForm = () => {
       expectedReturn: +enteredExpectedReturn,
       duration: +enteredDuration
     }
+
+    props.onCalcData(calcData);
     console.log("Submit clicked.");
     console.log(calcData);
   }
