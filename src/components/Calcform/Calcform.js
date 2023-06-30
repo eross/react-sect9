@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 const CalcForm = () => {
 
@@ -8,13 +8,13 @@ const CalcForm = () => {
   const [enteredDuration, setEnteredDuration] = useState(0);
 
   const inputChangeHandler = (identifier, value) => {
-    if(identifier === 'current-savings') {
+    if (identifier === 'current-savings') {
       setEnteredCurrentSavings(value);
     } else if (identifier === 'yearly-contribution') {
       setEnteredYearlyContribution(value);
     } else if (identifier === 'expected-return') {
       setEnteredExpectedReturn(value);
-    } else if (identifier === 'duration'){
+    } else if (identifier === 'duration') {
       setEnteredDuration(value);
     } else {
       console.log("Invalid identifier");
