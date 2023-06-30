@@ -1,10 +1,44 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 const CalcForm = () => {
+
+  const [enteredCurrentSavings, setEnteredCurrentSavings] = useState(0.0);
+  const [enteredYearlyContribution, setEnteredYearlyContribution] = useState(0.0);
+  const [enteredExpectedReturn, setEnteredExpectedReturn] = useState(0.0);
+  const [enteredDuration, setEnteredDuration] = useState(0);
+
   const inputChangeHandler = (identifier, value) => {
-    console.log(identifier);
-    console.log(value);
+    if(identifier === 'current-savings') {
+      setEnteredCurrentSavings(value);
+    } else if (identifier === 'yearly-contribution') {
+      setEnteredYearlyContribution(value);
+    } else if (identifier === 'expected-return') {
+      setEnteredExpectedReturn(value);
+    } else if (identifier === 'duration'){
+      setEnteredDuration(value);
+    } else {
+      console.log("Invalid identifier");
+      console.log(value);
+    }
   };
+
+  const resetHandler = (event) => {
+    event.preventDefault();
+    console.log("Reset clicked");
+  }
+
+  const calcHandler = (event) => {
+    event.preventDefault();
+
+    const calcData = {
+      currentSavings: +enteredCurrentSavings,
+      yearlyContribution: +enteredYearlyContribution,
+      expectedReturn: +enteredExpectedReturn,
+      duration: +enteredDuration
+    }
+    console.log("Submit clicked.");
+    console.log(calcData);
+  }
   return (
     <form className="form">
       <div className="input-group">
@@ -37,15 +71,15 @@ const CalcForm = () => {
           <label htmlFor="duration">Investment Duration (years)</label>
           <input type="number" id="duration"
             onChange={(event => {
-              inputChangeHandler('expected-return', event.target.value);
+              inputChangeHandler('duration', event.target.value);
             })} />
         </p>
       </div>
       <p className="actions">
-        <button type="reset" className="buttonAlt">
+        <button type="reset" className="buttonAlt" onClick={resetHandler}>
           Reset
         </button>
-        <button type="submit" className="button">
+        <button type="submit" className="button" onClick={calcHandler}>
           Calculate
         </button>
       </p>
